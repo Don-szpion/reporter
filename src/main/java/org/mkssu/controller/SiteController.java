@@ -5,8 +5,7 @@ import org.mkssu.dao.repository.StudentRepository;
 import org.mkssu.service.ReporterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -16,27 +15,35 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class SiteController {
+    //    private ReporterService reporterService;
+
     @Resource
-//    private ReporterService reporterService;
     private StudentRepository studentRepository;
+//
+//    @RequestMapping(path = "/home")
+//    @ResponseBody
+//    public String test() {
+//      Student student = new Student();
+//      student.setName("First");
+//      student.setEmail("Test");
+//      studentRepository.save(student);
+//        return "hello";
+//}
 
     @RequestMapping(path = "/home")
-    @ResponseBody
-    public String test() {
-      Student student = new Student();
-        student.setName("First");
-        student.setEmail("Test");
-        studentRepository.save(student);
-        return "hello";
-    }
+//    @ResponseBody
 //    public ModelAndView homePage(ModelAndView model) {
-        //ModelAndView model = new ModelAndView();
-//        model.setViewName("Hi!");
-// List list = findAll("1");
-        //model.setViewName("home");
-//        model.getModel().put("list", list);
-//        return model;
-    //}
+    public ModelAndView homePage() {
+        ModelAndView model = new ModelAndView();
+//        model.setViewName("mod");
+        List<Student> list = new ArrayList<>();
+        ReporterService reporterService = new ReporterService();
+        Student byName = reporterService.findByName("12");
+        list.add(byName);
+
+        model.getModel().put("list", list);
+        return model;
+    }
 
 //    private List <Student> findAll(@RequestParam(required=false) String studentNumber){
 //       List<Student> students = new ArrayList<>();
