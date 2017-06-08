@@ -5,11 +5,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import javax.servlet.ServletRegistration;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-    @Override
-    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setInitParameter("dispatchOptionsRequest", "true");
-        registration.setAsyncSupported(true);
-    }
+//    @Override
+//    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+//        registration.setInitParameter("dispatchOptionsRequest", "true");
+//        registration.setAsyncSupported(true);
+//    }
 
     @Override
     protected Class<?>[] getRootConfigClasses() {

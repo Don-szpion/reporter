@@ -15,33 +15,17 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class SiteController {
-    //    private ReporterService reporterService;
-
     @Resource
-    private StudentRepository studentRepository;
-//
-//    @RequestMapping(path = "/home")
-//    @ResponseBody
-//    public String test() {
-//      Student student = new Student();
-//      student.setName("First");
-//      student.setEmail("Test");
-//      studentRepository.save(student);
-//        return "hello";
-//}
+        private ReporterService reporterService;
 
     @RequestMapping(path = "/home")
-//    @ResponseBody
-//    public ModelAndView homePage(ModelAndView model) {
-    public ModelAndView homePage() {
-        ModelAndView model = new ModelAndView();
-//        model.setViewName("mod");
-        List<Student> list = new ArrayList<>();
-        ReporterService reporterService = new ReporterService();
-        Student byName = reporterService.findByName("12");
-        list.add(byName);
 
-        model.getModel().put("list", list);
+    public ModelAndView homePage(ModelAndView  model) {
+        System.out.println("in method homePage");
+        List<Student> all = reporterService.findAll();
+        System.out.println(all);
+        model.getModel().put("list", all);
+        model.setViewName("home");
         return model;
     }
 

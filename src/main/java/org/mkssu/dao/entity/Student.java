@@ -6,48 +6,30 @@ import javax.persistence.*;
  * Created by Don-Szpion on 04.06.2017.
  */
 @Entity
-@Table(name = "Student")
+@Table(name = "students")
 public class Student {
     @Id
-    @Column(name = "STUDENT_ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int student_id;
-    @Column(name = "NAME")
+    private Integer id;
+    @Column(name = "name")
     private String name;
-    @Column(name = "MARK")
+    @Column(name = "mark")
     private String mark;
-    @Column(name = "EMAIL")
+    @Column(name = "email")
     private String email;
 
-    public long getStudent_id() {
-        return student_id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMark() {
-        return mark;
-    }
-
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", mark='" + mark + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

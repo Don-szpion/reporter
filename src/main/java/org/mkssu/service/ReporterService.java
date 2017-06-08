@@ -4,13 +4,19 @@ import org.mkssu.dao.entity.Student;
 import org.mkssu.dao.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
-@Service
-public class ReporterService implements StudentRepository<Student>{
+import javax.annotation.Resource;
+import java.util.List;
 
-    @Override
+@Service
+public class ReporterService {
+    @Resource
+    private StudentRepository repository;
+
     public Student findByName(String name) {
-        Student student = new Student();
-        student.setName("Tor");
-        return student;
+        return repository.findByName(name);
+    }
+
+    public List<Student> findAll() {
+        return repository.findAll();
     }
 }
